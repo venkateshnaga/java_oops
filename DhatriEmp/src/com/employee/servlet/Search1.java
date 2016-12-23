@@ -2,6 +2,7 @@ package com.employee.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.employee.bean.EmployeeBean;
 import com.employee.dbo.Dboperations;
@@ -42,35 +44,67 @@ public class Search1 extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-String searchElement=request.getParameter("dropdown");
+		String searchElement=request.getParameter("dropdown");
 		
-		Dboperations dao=new Dboperations();
-		EmployeeBean empbean=new EmployeeBean();
-		PrintWriter out=response.getWriter();
-	
+		String temp=request.getParameter("emp");
 		
 		if(searchElement.equals("id"))
 		{
-			RequestDispatcher requestDis=request.getRequestDispatcher("viewid.jsp");
+			
+			double id;
+			id=Double.parseDouble(temp);
+			Dboperations dbo=new Dboperations();
+			
+			ArrayList<EmployeeBean> empList=dbo.search(id);
+			
+			HttpSession session=request.getSession();
+			session.setAttribute("employeeList", empList);
+			RequestDispatcher requestDis=request.getRequestDispatcher("viewsucess.jsp");
 			
 			requestDis.forward(request, response);
+			
+			/*RequestDispatcher requestDis=request.getRequestDispatcher("viewid.jsp");
+			
+			requestDis.forward(request, response);*/
 		
 		}
 		
 		else if(searchElement.equals("name"))
 		 
 		{
+			Dboperations dbo=new Dboperations();
 			
-			RequestDispatcher requestDis=request.getRequestDispatcher("viewname.jsp");
-			requestDis.forward(request, response);
+			
+			ArrayList<EmployeeBean> empList=dbo.searchname(temp);
+			
+			HttpSession session=request.getSession();
+			session.setAttribute("employeeList", empList);
+			RequestDispatcher requestDis=request.getRequestDispatcher("viewsucess.jsp");
+			
+			requestDis.forward(request, response);	
+		/*	RequestDispatcher requestDis=request.getRequestDispatcher("viewname.jsp");
+			requestDis.forward(request, response);*/
 			
 		}
 		else if(searchElement.equals("sal"))
 			 
 		{
-			RequestDispatcher requestDis=request.getRequestDispatcher("viewsal.jsp");
+			double salary;
+			Dboperations dbo=new Dboperations();
+			salary=Double.parseDouble(temp);
 			
-			requestDis.forward(request, response);
+			ArrayList<EmployeeBean> empList=dbo.searchsal(salary);
+			
+			HttpSession session=request.getSession();
+			session.setAttribute("employeeList", empList);
+			RequestDispatcher requestDis=request.getRequestDispatcher("viewsucess.jsp");
+			
+			requestDis.forward(request, response);	
+			
+			
+			/*RequestDispatcher requestDis=request.getRequestDispatcher("viewsal.jsp");
+			
+			requestDis.forward(request, response);*/
 		}
 		
 	}

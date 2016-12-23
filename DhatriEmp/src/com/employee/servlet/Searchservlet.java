@@ -47,10 +47,10 @@ public class Searchservlet extends HttpServlet
 		Dboperations dbo=new Dboperations();
 		
 		
-		ArrayList<EmployeeBean> empList=dbo.search(tempid);
+		//ArrayList<EmployeeBean> empList=dbo.search(tempid);
 		
 		HttpSession session=request.getSession();
-		session.setAttribute("employeeList", empList);
+		//session.setAttribute("employeeList", empList);
 		RequestDispatcher requestDis=request.getRequestDispatcher("view.jsp");
 		
 		requestDis.forward(request, response);

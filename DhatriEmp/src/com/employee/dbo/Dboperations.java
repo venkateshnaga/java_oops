@@ -98,7 +98,7 @@ public class Dboperations
 		
 		return result;
 	}
-	public ArrayList<EmployeeBean> search(String tempid)
+	public ArrayList<EmployeeBean> search(double tempid)
 	{
 		ArrayList<EmployeeBean> employeeList=new ArrayList<EmployeeBean>();
 		
@@ -106,7 +106,7 @@ public class Dboperations
 		
 		try {
 			pst=con.prepareStatement(query);
-			pst.setString(1, tempid);
+			pst.setDouble(1, tempid);
 			
 			resultset=pst.executeQuery();
 			

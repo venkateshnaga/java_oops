@@ -42,11 +42,12 @@ public class Updateservlet1 extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String tempid=request.getParameter("search");
-		
+		double id;
+		id=Double.parseDouble(tempid);
 		Dboperations dbo=new Dboperations();
 		
 		
-		ArrayList<EmployeeBean> empList=dbo.search(tempid);
+		ArrayList<EmployeeBean> empList=dbo.search(id);
 		
 		HttpSession session=request.getSession();
 		session.setAttribute("employeeList", empList);

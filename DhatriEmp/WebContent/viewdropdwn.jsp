@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body align="center">
 <form action="Search1" method="post">
 View By EmployeeId|Name|Salary:
 <select name="dropdown">
@@ -14,6 +14,7 @@ View By EmployeeId|Name|Salary:
 <option value="name">Name</option>
 <option value="sal">Salary</option>
 </select>
+<input type="text" name="emp"/>
 <input type="submit" value="submit"/>
 </form>
 </body>
