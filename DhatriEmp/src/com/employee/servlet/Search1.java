@@ -43,7 +43,7 @@ public class Search1 extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
+		response.setContentType("text/html");
 		String searchElement=request.getParameter("dropdown");
 		
 		String temp=request.getParameter("emp");
@@ -62,48 +62,34 @@ public class Search1 extends HttpServlet {
 			}
 			catch(Exception e)
 			{
-				out.print("Wrong Input,Please Enter Correct Input");
-				/*out.print("<html><body>");
-				out.print("<form action='' method='post'"+ ">");
-				out.print("<input type='submit' value='Go'>");
-				out.print("</form></body></html>");*/
-				RequestDispatcher requestDis=request.getRequestDispatcher("viewdropdwn.jsp");
-				requestDis.forward(request, response);
+				out.print("Please Enter Correct Input");
+				out.print("<html><body align='center'>");
+				out.print("<form action='viewdropdwn.jsp' method='post'"+ ">");
+				out.print("<br>");
+				out.print("<input type='submit' value='Back'>");
+				out.print("</form></body></html>");
 			}
-		/*	double id;
-			id=Double.parseDouble(temp);
-			Dboperations dbo=new Dboperations();
-			*/
-			//ArrayList<EmployeeBean> empList=dbo.search(id);
-			
-			
-			
-			/*RequestDispatcher requestDis=request.getRequestDispatcher("viewid.jsp");
-			
-			requestDis.forward(request, response);*/
-		
 		}
 		
 		else if(searchElement.equals("name"))
 		 
 		{
-			Dboperations dbo=new Dboperations();
 			
+			Dboperations dbo=new Dboperations();
 			
 			ArrayList<EmployeeBean> empList=dbo.searchname(temp);
 			
 			HttpSession session=request.getSession();
 			session.setAttribute("employeeList", empList);
 			RequestDispatcher requestDis=request.getRequestDispatcher("viewsucess.jsp");
-			
 			requestDis.forward(request, response);	
-		/*	RequestDispatcher requestDis=request.getRequestDispatcher("viewname.jsp");
-			requestDis.forward(request, response);*/
-			
+		
 		}
 		else if(searchElement.equals("sal"))
 			 
 		{
+			try
+			{
 			double salary;
 			Dboperations dbo=new Dboperations();
 			salary=Double.parseDouble(temp);
@@ -116,10 +102,16 @@ public class Search1 extends HttpServlet {
 			
 			requestDis.forward(request, response);	
 			
-			
-			/*RequestDispatcher requestDis=request.getRequestDispatcher("viewsal.jsp");
-			
-			requestDis.forward(request, response);*/
+			}
+			catch(Exception e)
+			{
+				out.print("Please Enter Correct Input");
+				out.print("<html><body align='center'>");
+				out.print("<form action='viewdropdwn.jsp' method='post'"+ ">");
+				out.print("<br>");
+				out.print("<input type='submit' value='Back'>");
+				out.print("</form></body></html>");
+			}
 		}
 		
 	}

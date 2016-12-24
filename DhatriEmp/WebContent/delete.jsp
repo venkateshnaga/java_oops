@@ -20,7 +20,9 @@
 <br>
 <input type="submit" name="Delete" />
 
-</form>
+</form><br>
+<a href="index.html">Go To HomePage</a>
 </div>
+
 </body>
 </html>

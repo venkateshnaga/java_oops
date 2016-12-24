@@ -6,21 +6,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Apply For Loan</title>
 </head>
-<body style="background-color: pink">
+<body style="background-color: white">
 <div align="center">
 <form action="Loanservlet" method="post">
 
 <table align="center">
-<tr>
+<tr><br>
 <td>Enter Employee Id To Apply For Loan:</td>
 	<td> <input type="text" name="tempid" /></td>
 </tr>
 
 
 
-</table>
+</table><br>
 <input type="submit" name="Apply" />
-</form>
+</form><br>
+<a href="index.html">Go To HomePage</a>
 </div>
 </body>
 </html>

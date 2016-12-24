@@ -5,17 +5,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-</head>
+</head><br>
 <body align="center">
 <form action="Search1" method="post">
-View By EmployeeId|Name|Salary:
+View By Employee Id|Name|Salary:
 <select name="dropdown">
  <option value="id">Id</option>
 <option value="name">Name</option>
 <option value="sal">Salary</option>
 </select>
 <input type="text" name="emp"/>
-<input type="submit" value="submit"/>
-</form>
+<input type="submit" value="View"/>
+</form><br>
+<a href="index.html">Go To HomePage</a>
 </body>
 </html>

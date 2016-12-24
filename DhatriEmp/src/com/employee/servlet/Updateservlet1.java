@@ -1,6 +1,7 @@
 package com.employee.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -41,20 +42,31 @@ public class Updateservlet1 extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		PrintWriter out=response.getWriter();
 		String tempid=request.getParameter("search");
+		
+	try
+	{
 		double id;
 		id=Double.parseDouble(tempid);
 		Dboperations dbo=new Dboperations();
-		
-		
 		ArrayList<EmployeeBean> empList=dbo.search(id);
-		
 		HttpSession session=request.getSession();
 		session.setAttribute("employeeList", empList);
 		RequestDispatcher requestDis=request.getRequestDispatcher("updateview.jsp");
 		
 		requestDis.forward(request, response);
-		
+	}
+	catch(Exception e)
+	{
+		out.print("Please Enter Valid Input");
+		out.print("<html><body align='center'>");
+		out.print("<form action='updateview.jsp' method='post'"+ ">");
+		out.print("<br>");
+		out.print("<input type='submit' value='Back'>");
+		out.print("</form></body></html>");
+	}
 	}
 
 }

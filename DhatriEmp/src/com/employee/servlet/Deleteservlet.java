@@ -64,7 +64,16 @@ public class Deleteservlet extends HttpServlet {
 		{
 			requestDispact.forward(request, response);
 		}
-	
+		else
+		{
+			out.print("No Employee Data To Delete");
+			out.print("<html><body align='center'>");
+			out.print("<form action='delete.jsp' method='post'"+ ">");
+			out.print("<br>");
+			out.print("<input type='submit' value='Back'>");
+			out.print("</form></body></html>");
+			
+		}
 
 	}
 

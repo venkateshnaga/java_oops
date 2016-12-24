@@ -48,7 +48,8 @@ public class Loanservlet extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		
 		
-
+	try
+	{
 		String tempid=request.getParameter("tempid");
 		
 		Dboperations dbo=new Dboperations();
@@ -61,7 +62,16 @@ public class Loanservlet extends HttpServlet {
 		session.setAttribute("employeeList", empList);
 		
 		requestDispact.forward(request, response);
-
+	}
+	catch(Exception e)
+	{
+		out.print("Please Enter Valid Input");
+		out.print("<html><body align='center'>");
+		out.print("<form action='loan.jsp' method='post'"+ ">");
+		out.print("<br>");
+		out.print("<input type='submit' value='Back'>");
+		out.print("</form></body></html>");
+	}
 
 	}
 	}

@@ -19,8 +19,11 @@
 Enter Employee Id :
 <input type="text" name="search" />
 <input type="submit" value="Update By Id"><br><br>
+<a href="index.html">Go To HomePage</a>
 <hr>
+
 </form>
+
 </div>
 
 <%
