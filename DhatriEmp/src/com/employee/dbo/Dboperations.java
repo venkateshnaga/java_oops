@@ -133,6 +133,41 @@ public class Dboperations
 		return employeeList;
 		
 	}
+	public ArrayList<EmployeeBean> search1(String searchVariable)
+	{
+		ArrayList<EmployeeBean> employeeList=new ArrayList<EmployeeBean>();
+		
+		String query="select empid,empname,empsal,empexp,emploc,emploan,empemi from empdb where empid=?";
+		
+		try {
+			pst=con.prepareStatement(query);
+			pst.setString(1, searchVariable);
+			
+			resultset=pst.executeQuery();
+			
+			EmployeeBean empBean=null;
+			while(resultset.next())
+			{
+				empBean=new EmployeeBean();
+				empBean.setEmpid(resultset.getString(1));
+				empBean.setEmpname(resultset.getString(2));
+				empBean.setEmpsal(resultset.getDouble(3));
+				empBean.setEmpexp(resultset.getDouble(4));
+				empBean.setEmploc(resultset.getString(5));
+				empBean.setEmploan(resultset.getDouble(6));
+				empBean.setEmpemi(resultset.getDouble(7));
+				employeeList.add(empBean);
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return employeeList;
+		
+	}
 	public ArrayList<EmployeeBean> searchsal(double salary)
 	{
 		ArrayList<EmployeeBean> employeeList=new ArrayList<EmployeeBean>();
