@@ -9,7 +9,7 @@
 <body>
 <script language="javascript" type="text/javascript">  
 var xmlHttp;  
-var xmlHttp;
+/* var xmlHttp; */
 function showResult(searchVariable){
 if (typeof XMLHttpRequest != "undefined"){
 xmlHttp= new XMLHttpRequest();

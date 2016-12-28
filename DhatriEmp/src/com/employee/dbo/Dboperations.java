@@ -25,7 +25,7 @@ public class Dboperations
 		
 		
 		//String query="insert into emp(empname,empsal,empexp,emploc,emploan,empemi) values(?,?,?,?,?,?)";
-		String query="insert into empdb values(?,?,?,?,?,?,?)";
+		String query="insert into empdb values(?,?,?,?,?,?,?,?)";
 		
 		try 
 		{
@@ -37,9 +37,8 @@ public class Dboperations
 			pst.setString(5,emp.getEmploc());			
 			pst.setDouble(6,emp.getEmploan());
 			pst.setDouble(7,emp.getEmpemi());
-			
+			pst.setString(8,emp.getEmpemail());
 			result=pst.executeUpdate();
-			
 		} 
 		catch (SQLException e) 
 		{

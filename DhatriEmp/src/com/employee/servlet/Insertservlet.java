@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.employee.autoid.GenerateEmployeeId;
 import com.employee.bean.EmployeeBean;
 import com.employee.dbo.Dboperations;
+import com.employee.mail.SendMail;
 
 
 /**
@@ -50,12 +52,13 @@ public class Insertservlet extends HttpServlet
 
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
-		
-		String empid=request.getParameter("empid");
+		HttpSession session=request.getSession();
+		String empid=GenerateEmployeeId.getEmployeeId();
 		String empname=request.getParameter("empname");
 		String empsal=request.getParameter("empsal");
 		String emploc=request.getParameter("emploc");
 		String empexp=request.getParameter("empexp");
+		String empemail=request.getParameter("empemail");
 		double salary;
 		double exp;
 		try
@@ -74,13 +77,33 @@ public class Insertservlet extends HttpServlet
 		emp.setEmpsal(salary);
 		emp.setEmpexp(exp);
 		emp.setEmploc(emploc);
-		
+		emp.setEmpemail(empemail);
 		
 		
 		Dboperations dbo=new Dboperations();
 		int result=dbo.insert(emp);
 		
-		RequestDispatcher requestDispact=request.getRequestDispatcher("insertsucess.jsp");
+		String resultMessage = "";
+
+		try {
+			SendMail.sendEmail(emp);
+			resultMessage = "Thanks For your enroll., Please check your mail";
+		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+			resultMessage = "oops..!!!!: " + ex.getMessage();
+		} 
+		finally 
+		{
+			session.setAttribute("Message", resultMessage);
+			
+			getServletContext().getRequestDispatcher("/mailsucess.jsp").forward(request, response);
+		}
+		
+		
+		
+		/*RequestDispatcher requestDispact=request.getRequestDispatcher("insertsucess.jsp");
 		
 		HttpSession session=request.getSession();
 		session.setAttribute("empid", empid);
@@ -89,7 +112,7 @@ public class Insertservlet extends HttpServlet
 		{
 			requestDispact.forward(request, response);
 		}
-		
+		*/
 		
 		
 	}

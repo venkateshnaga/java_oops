@@ -9,6 +9,7 @@ public class EmployeeBean
 	private double empexp;
 	private double emploan;
 	private double empemi;
+	private String empemail;
 	public String getEmpid() {
 		return empid;
 	}
@@ -50,6 +51,13 @@ public class EmployeeBean
 	}
 	public void setEmpemi(double empemi) {
 		this.empemi = empemi;
+	}
+	
+	public String getEmpemail() {
+		return empemail;
+	}
+	public void setEmpemail(String empemail) {
+		this.empemail = empemail;
 	}
 
 }

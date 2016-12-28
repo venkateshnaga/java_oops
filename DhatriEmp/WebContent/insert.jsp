@@ -41,11 +41,11 @@ color: red;
 <form action="Insertservlet" method="post">
 
  <table>
-  <tr>
+  <!-- <tr>
       <td>Enter Employee Id: <sup id="star">*</sup> </td>
       <td><input type="text" name="empid" id="employeeid" onkeypress="return clearField()"/></td>
       <td> <span id="error"></span> </td>
-    </tr>
+    </tr> -->
     <tr>
       <td>Enter Employee Name:<sup id="star">*</sup></td>
       <td><input type="text" name="empname" id="employeename" onkeypress="return clearField()"/></td>
@@ -58,6 +58,10 @@ color: red;
      <tr>
       <td>Enter Location:</td>
       <td><input type="text" name="emploc" /></td>
+    </tr>
+    <tr>
+      <td>E-Mail:</td>
+      <td><input type="text" name="empemail" /></td>
     </tr>
     <tr>
       <td>Enter Experience:<sup id="star">*</sup></td>
