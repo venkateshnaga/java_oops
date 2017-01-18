@@ -40,7 +40,7 @@ public class Dboperations
 			pst.setString(8,emp.getEmpemail());
 			result=pst.executeUpdate();
 		} 
-		catch (SQLException e) 
+		catch (Exception e) 
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();

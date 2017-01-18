@@ -10,7 +10,7 @@
 <div align="center">
 
 <%
-String empid=(String)session.getAttribute("empid");
+String empid=(String)session.getAttribute("employeeidreg");
 
 out.print("Sucessfull With Employee Id: " +empid);
 %>
@@ -19,7 +19,7 @@ out.print("Sucessfull With Employee Id: " +empid);
 
 <br>
 <br>
-<a href="index.html">Go To HomePage</a>
+<a href="home.jsp">Go To HomePage</a>
 </div>
 </body>
 </html>

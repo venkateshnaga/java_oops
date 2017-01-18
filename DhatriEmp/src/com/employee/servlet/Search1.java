@@ -44,8 +44,8 @@ public class Search1 extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.setContentType("text/html");
-		String searchElement=request.getParameter("dropdown");
 		
+		String searchElement=request.getParameter("dropdown");
 		String temp=request.getParameter("emp");
 		PrintWriter out=response.getWriter();
 		if(searchElement.equals("id"))
@@ -113,7 +113,5 @@ public class Search1 extends HttpServlet {
 				out.print("</form></body></html>");
 			}
 		}
-		
 	}
-
 }
